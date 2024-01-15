@@ -1,0 +1,37 @@
+[package]
+name = "sov-zk-cycle-macros"
+description = "cycle counting utils"
+authors = { workspace = true }
+edition = { workspace = true }
+homepage = { workspace = true }
+license = { workspace = true }
+repository = { workspace = true }
+
+version = { workspace = true }
+readme = "README.md"
+resolver = "2"
+autotests = false
+
+[lib]
+proc-macro = true
+
+[[test]]
+name = "tests"
+path = "tests/all_tests.rs"
+
+[dependencies]
+anyhow = "1"
+syn = { version = "2", features = ["full"] }
+quote = "1"
+proc-macro2 = "1"
+borsh = "1"
+
+[dev-dependencies]
+trybuild = "1"
+sov-zk-cycle-macros = { path = "../macros" }
+sov-zk-cycle-utils = { path = "../utils" }
+risc0-zkvm = { workspace = true, default-features = false, features = ["std"] }
+risc0-zkvm-platform = { workspace = true }
+
+[features]
+bench = []
